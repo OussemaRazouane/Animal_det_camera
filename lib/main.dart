@@ -1,6 +1,13 @@
+import 'package:animal_det_camera/detectionSecreen.dart';
 import 'package:flutter/material.dart';
+import 'package:camera/camera.dart';
 
-void main() {
+late List<CameraDescription> cameras=[];
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  cameras = await availableCameras();
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -8,6 +15,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const MaterialApp(
+      home:DetectionScreen(),
+    );
   }
 }
